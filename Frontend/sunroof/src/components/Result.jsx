@@ -4,6 +4,7 @@ import AVATAR from '../assests/shutterstock_1733849612_5_SotxDZS.jpg'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Card from './Card';
+import ChatBubble from './ChatBubble';
 function Result() {
     const settings = {
         dots: true,
@@ -12,7 +13,6 @@ function Result() {
         slidesToShow: 2,
         slidesToScroll: 1,
         centerMode: true
-        // centerPadding: $('.slick').find('.single-slide-whatever-you-named-it').outerWidth() / 2
       };
   return (
     <div className='w-[50rem] px-[6rem] py-[3rem]'>
@@ -39,6 +39,15 @@ function Result() {
             </div>
         </div>
 
+        <ChatBubble message="Ready to see ballpark pricing?" />
+        <div className="flex mt-5 gap-2">
+            <button className='border-[1px] border-[#03a9f4] h-[3rem] w-[4rem] flex justify-center items-center'>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-[#03a9f4]">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+            </button>
+            <button className='bg-[#03a9f4] w-full text-white text-xl font-bold h-[3rem]'>Calculate Savings</button>
+        </div>
     </div>
   )
 }
