@@ -1,7 +1,10 @@
-// import React, { useState } from 'react'
+import React from 'react'
 import ChatBubble from './ChatBubble'
-// import Slider from 'react-input-slider';
-function Bill() {
+import { Slider } from '@material-ui/core';
+import { ChevronLeftIcon } from '@heroicons/react/24/outline'
+
+  
+function Bill({step,setStep}) {
   return (
     <div className='w-[50rem] px-[6rem] py-[3rem]'>
         <div className='space-y-3'>
@@ -14,14 +17,16 @@ function Bill() {
         </div>
 
         <ChatBubble message="What is your average electric bill payment?" />
-
+        <Slider
+         defaultValue={50} 
+        //  aria-label="Default" 
+         valueLabelDisplay="auto" />
+         
         <div className="flex mt-5 gap-2">
-            <button className='border-[1px] border-[#03a9f4] h-[3rem] w-[4rem] flex justify-center items-center'>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-[#03a9f4]">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                </svg>
+            <button onClick={()=>{setStep(step-1)}} className='border-[1px] border-[#03a9f4] h-[3rem] w-[4rem] flex justify-center items-center'>
+                <ChevronLeftIcon className='text-[#03a9f4] h-6 w-6'/>
             </button>
-            <button className='bg-[#03a9f4] w-full text-white text-xl font-bold h-[3rem]'>Calculate Savings</button>
+            <button onClick={()=>{setStep(step+1)}} className='bg-[#03a9f4] w-full text-white text-xl font-bold h-[3rem]'>Calculate Savings</button>
         </div>
     </div>
   )
