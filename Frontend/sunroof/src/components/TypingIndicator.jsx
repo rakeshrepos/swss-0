@@ -2,7 +2,7 @@ import React from 'react'
 import './TypingIndicator.css'
 function TypingIndicator() {
   return (
-    <div class="typing-indicator">
+    <div className="typing-indicator">
         <span></span>
         <span></span>
         <span></span>

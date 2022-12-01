@@ -14,7 +14,7 @@ function Question4({credictScore,setCreditScore,step,setStep}) {
         setStep(step+1)
     }
   return (
-    <div className='w-[50rem] px-[6rem] py-[3rem]'>
+    <div className='w-screen lg:w-[50rem] lg:px-[6rem] py-[3rem]'>
         <div className='space-y-3'>
             
         </div>

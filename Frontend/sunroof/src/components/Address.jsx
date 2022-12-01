@@ -3,7 +3,7 @@ import BG from '../assests/map-mobile.webp'
 import AVATAR from '../assests/shutterstock_1733849612_5_SotxDZS.jpg'
 function Address({address,setAddress,step,setStep}) {
   return (
-    <div className='w-[50rem]'>
+    <div className='w-screen h-screen lg:h-[30rem] lg:w-[40rem]'>
         <div className="h-[12rem] relative bg-cover bg-center bg-no-repeat" style={{ backgroundImage:`url(${BG})` }}>
             <div className="w-full flex justify-center">
                 <img src={AVATAR} alt="" className='absolute bottom-[-2rem] h-[7rem] w-[7rem] rounded-full border-[5px] border-orange-400'/>

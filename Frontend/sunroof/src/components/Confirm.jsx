@@ -2,7 +2,7 @@ import React from 'react'
 import { ChevronLeftIcon } from '@heroicons/react/24/outline'
 function Confirm({step,setStep}) {
   return (
-    <div className='w-[50rem] px-[6rem] py-[3rem]'>
+    <div className='w-screen lg:w-[50rem] px-[1rem] lg:px-[6rem] py-[3rem]'>
         <div className='space-y-3'>
             
         </div>

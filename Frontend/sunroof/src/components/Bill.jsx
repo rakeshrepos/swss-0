@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ChatBubble from './ChatBubble'
-import { Slider } from '@material-ui/core';
 import { ChevronLeftIcon } from '@heroicons/react/24/outline'
+import './Slider.css'
 
   
-function Bill({step,setStep}) {
+function Bill({bill,setBill,step,setStep}) {
+    const [sliderPosition,setSliderPosition] = useState(0);
+
+    const storeBill = (billValue)=>{
+        var position = (billValue-30)/12;
+        setSliderPosition(position+'%')
+        setBill(billValue)
+    }
+
+    let positionStyle = {
+        left: `${sliderPosition}`
+      };
   return (
-    <div className='w-[50rem] px-[6rem] py-[3rem]'>
+    <div className='w-screen h-screen lg:w-[50rem] px-[1rem] lg:px-[6rem] py-[3rem]'>
         <div className='space-y-3'>
             <div className='w-1/3 flex justify-end'>
                 <p className='text-[1rem] text-gray-500'>(Step 1 of 3)</p>
@@ -17,10 +28,14 @@ function Bill({step,setStep}) {
         </div>
 
         <ChatBubble message="What is your average electric bill payment?" />
-        <Slider
-         defaultValue={50} 
-        //  aria-label="Default" 
-         valueLabelDisplay="auto" />
+        <div className="mt-5 relative">
+            <div className="absolute w-[7rem] border ml-full" style={positionStyle}>
+                <p className='text-center text-sm font-semibold bg-[#ff9900d9]'>My electirc bill</p>
+                <p className='text-center font-semibold py-2'>${bill} / month</p>
+            </div>
+            <input type="range" name="bill" min="30" max="1000" step="5" onChange={(e)=>{storeBill(e.target.value)}} 
+                className="mt-[6rem] h-[1rem]"/>
+        </div>
          
         <div className="flex mt-5 gap-2">
             <button onClick={()=>{setStep(step-1)}} className='border-[1px] border-[#03a9f4] h-[3rem] w-[4rem] flex justify-center items-center'>

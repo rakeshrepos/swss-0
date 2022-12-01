@@ -23,7 +23,7 @@ function Result({step,setStep}) {
         }, 1000);
     },[step]);
   return (
-    <div className='w-[50rem] px-[6rem] py-[3rem]'>
+    <div className='w-screen lg:w-[50rem] lg:px-[6rem] py-[3rem]'>
         <div className='space-y-3'>
             <div className='w-2/3 flex justify-end'>
                 <p className='text-[1rem] text-gray-500'>(Step 2 of 3)</p>

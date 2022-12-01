@@ -10,7 +10,7 @@ function Question1({address,setAddress,appartment,setAppartment,step,setStep}) {
       }, 1000);
     }, [address]);
   return (
-    <div className='w-[50rem] px-[6rem] py-[3rem]'>
+    <div className='w-screen lg:w-[50rem] lg:px-[6rem] py-[3rem]'>
         <div className='space-y-3'>
             
         </div>

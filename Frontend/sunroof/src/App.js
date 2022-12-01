@@ -23,7 +23,7 @@ import SheduleTime from "./components/SheduleTime";
 function App() {
   const [step,setStep] = useState(1)
   const [address,setAddress] = useState("")
-  const [bill,setBill] = useState();
+  const [bill,setBill] = useState(30);
   const [name,setName] = useState("")
   const [email,setEmail] = useState("")
   const [number,setNumber] = useState("")
@@ -38,13 +38,13 @@ function App() {
   const [time,setTime] = useState();
 
   return (
-    <div className="bg-cover min-h-screen " style={{ backgroundImage: `url("https://stella.demand-iq.com/media/backgrounds/e-AnGx1n-gtw8-unsplash_wAsqa2f.jpg")` }}>
+    <div className="bg-cover min-h-screen" style={{ backgroundImage: `url("https://stella.demand-iq.com/media/backgrounds/e-AnGx1n-gtw8-unsplash_wAsqa2f.jpg")` }}>
       <Header />
       
-      <div className="flex justify-center py-8">
-        <div className="bg-white rounded-lg">
+      <div className="flex justify-center  lg:py-8">
+        <div className="bg-white lg:rounded-lg">
           {step===1?<Address address={address} setAddress={setAddress} step={step} setStep={setStep}/>:null}
-          {step===2?<Bill setBill={setBill} step={step} setStep={setStep}/>:null}
+          {step===2?<Bill bill={bill} setBill={setBill} step={step} setStep={setStep}/>:null}
           {step===3?<Messages step={step} setStep={setStep}/>:null}
           {step===4?<Result step={step} setStep={setStep}/>:null}
           {step===5?<Contact name={name} setName={setName} email={email} setEmail={setEmail} number={number} setNumber={setNumber} step={step} setStep={setStep}/>:null}

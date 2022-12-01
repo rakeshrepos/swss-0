@@ -1,8 +1,10 @@
 import React from 'react'
 import ChatBubble from './ChatBubble'
+// import Button from '@material-ui/core'
 function Qualified({step,setStep}) {
+
   return (
-    <div className='w-[50rem] px-[6rem] py-[3rem]'>
+    <div className='w-screen lg:w-[50rem] lg:px-[6rem] py-[3rem]'>
         <div className='space-y-3'>
             {/* progress  */}
         </div>

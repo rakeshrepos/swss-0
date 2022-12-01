@@ -2,7 +2,7 @@ import React from 'react'
 import CLIPART from '../assests/clip-art.png'
 function FinalConfirmation() {
   return (
-    <div className='w-[50rem] px-[6rem] py-[3rem]'>
+    <div className='w-screen lg:w-[50rem] px-[1rem] lg:px-[6rem] py-[3rem]'>
         <div className='w-full flex justify-center'>
             <img src={CLIPART} alt="" />
         </div>
