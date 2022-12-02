@@ -1,7 +1,20 @@
+import axios from 'axios';
 import React from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-function Shedule({startDate,setStartDate,step,setStep}) {
+function Shedule({userId,date,setDate,step,setStep}) {
+
+    const storeDate = (dateValue)=>{
+        setDate(dateValue)
+        try{
+            axios.post('http://localhost:8000/api/store-date', {user_id:userId,date:dateValue})
+                .then(response =>{console.log(response.data)} );
+        }catch(e){
+            console.log(e)
+        }
+  
+        setStep(step+1)
+    }
   return (
     <div className='w-screen lg:w-[50rem] lg:px-[6rem] py-[3rem]'>
         <div className='space-y-3'>
@@ -12,7 +25,11 @@ function Shedule({startDate,setStartDate,step,setStep}) {
            <div className="w-full flex flex-col items-center">
                 <p class="text-3xl">What day works best?</p>
                 <p>Pick a day to review your personalized quote over the phone.</p>
-                <DatePicker selected={startDate}   onChange={(date) => setStartDate(date)} inline />
+                <DatePicker 
+                    selected={date}   
+                    onChange={(date) =>{storeDate(date)} } 
+                    minDate={date}
+                    inline />
            </div>
         </div>
         <div className="grid grid-cols-2 mt-5 ">

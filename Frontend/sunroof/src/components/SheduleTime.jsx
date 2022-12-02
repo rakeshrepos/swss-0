@@ -1,9 +1,24 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
 
-function SheduleTime({time,setTime,step,setStep}) {
+function SheduleTime({userId,region,setRegion,time,setTime,step,setStep}) {
+    const [addrtype, setAddrtype] = useState(["Pacific Time", "Mountain Time","Mountain Time","Eastern Time","Hawaii-Aleutian Time Zone","Alaska Time Zone"])
+    const Add = addrtype.map(Add => Add)
+
+    const handleAddrTypeChange = (e) => { 
+        console.log((addrtype[e.target.value])); 
+        setRegion(addrtype[e.target.value]) 
+    }
 
     const storeTime = (timeValue)=>{
-        // setTime(timeValue)
+        setTime(timeValue)
+        try{
+            axios.post('http://localhost:8000/api/store-time', {user_id:userId,region:region,time:timeValue})
+                .then(response =>{console.log(response.data)} );
+        }catch(e){
+            console.log(e)
+        }
+  
         setStep(step+1)
     }
   return (
@@ -16,13 +31,11 @@ function SheduleTime({time,setTime,step,setStep}) {
            <div className="w-full flex flex-col items-center">
                 <p class="text-3xl">And what time?</p>
                 <div>
-                    <select name="" id="">
-                        <option value="Pacific Time - Us & Canada - (9:47 pm)">Pacific Time - Us & Canada - (9:47 pm)</option>
-                        <option value="Mountain Time - US & Canada - (10:49 pm)">Mountain Time - US & Canada - (10:49 pm)</option>
-                        <option value="Central Time - US & Canada - (11:50 pm)">Central Time - US & Canada - (11:50 pm)</option>
-                        <option value="Eastern Time - US & Canada - (12:51 pm)">Eastern Time - US & Canada - (12:51 pm)</option>
-                        <option value="Hawaii-Aleutian Time Zone - (7:51 pm)">Hawaii-Aleutian Time Zone - (7:51 pm)</option>
-                        <option value="Alaska Time Zone - (8:53 pm)">Alaska Time Zone - (8:53 pm)</option>
+                    <select
+                        onChange={e => handleAddrTypeChange(e)}>
+                    {
+                        Add.map((address, key) => <option key={key} value={key}>{address} </option>)
+                    }
                     </select>
                 </div>
                 <div className='mt-2'>

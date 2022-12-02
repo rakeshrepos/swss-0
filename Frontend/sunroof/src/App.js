@@ -19,48 +19,183 @@ import Result from "./components/Result";
 import Shedule from "./components/Shedule";
 import SheduleTime from "./components/SheduleTime";
 
-
 function App() {
-  const [step,setStep] = useState(1)
-  const [address,setAddress] = useState("")
-  const [bill,setBill] = useState(30);
-  const [name,setName] = useState("")
-  const [email,setEmail] = useState("")
-  const [number,setNumber] = useState("")
-  const [appartment,setApparment] = useState("")
-  const [property,setProperty] = useState("");
-  const [family,setFamily] = useState("");
-  const [credictScore,setCreditScore] = useState("");
-  const [duration,setDuration] = useState("");
+  const [step, setStep] = useState(1);
+  const [address, setAddress] = useState("");
+  const [city,setCity] = useState("");
+  const [state,setState] = useState("");
+  const [zipcode,setZipCode] = useState("");
+  const [bill, setBill] = useState(30);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [number, setNumber] = useState("");
+  const [appartment, setApparment] = useState("");
+  const [property, setProperty] = useState("");
+  const [family, setFamily] = useState("");
+  const [credictScore, setCreditScore] = useState("");
+  const [duration, setDuration] = useState("");
 
-  const [startDate, setStartDate] = useState(new Date());
-
-  const [time,setTime] = useState();
+  
+  const [date, setDate] = useState(new Date());
+  const [region, setRegion] = useState("");
+  const [time, setTime] = useState();
+  
+  const [result, setResult] = useState([]);
+  const [userId, setUserId] = useState([]);
 
   return (
-    <div className="bg-cover min-h-screen" style={{ backgroundImage: `url("https://stella.demand-iq.com/media/backgrounds/e-AnGx1n-gtw8-unsplash_wAsqa2f.jpg")` }}>
+    <div
+      className="bg-cover min-h-screen"
+      style={{
+        backgroundImage: `url("https://stella.demand-iq.com/media/backgrounds/e-AnGx1n-gtw8-unsplash_wAsqa2f.jpg")`,
+      }}
+    >
       <Header />
-      
+
       <div className="flex justify-center  lg:py-8">
         <div className="bg-white lg:rounded-lg">
-          {step===1?<Address address={address} setAddress={setAddress} step={step} setStep={setStep}/>:null}
-          {step===2?<Bill bill={bill} setBill={setBill} step={step} setStep={setStep}/>:null}
-          {step===3?<Messages step={step} setStep={setStep}/>:null}
-          {step===4?<Result step={step} setStep={setStep}/>:null}
-          {step===5?<Contact name={name} setName={setName} email={email} setEmail={setEmail} number={number} setNumber={setNumber} step={step} setStep={setStep}/>:null}
-          {step===6?<Qualified step={step} setStep={setStep}/>:null}
-          {step===7?<Question1 address={address} setAddress={setAddress} appartment={appartment} setApparment={setApparment} step={step} setStep={setStep}/>:null}
-          {step===8?<Question2 property={property} setProperty={setProperty} step={step} setStep={setStep}/>:null}
-          {step===9?<Question3 family={family} setFamily={setFamily} step={step} setStep={setStep}/>:null}
-          {step===10?<Question4 credictScore={credictScore} setCreditScore={setCreditScore} step={step} setStep={setStep}/>:null}
-          {step===11?<Question5 duration={duration} setDuration={setDuration} step={step} setStep={setStep}/>:null}
-          {step===12?<QualifedMessage step={step} setStep={setStep}/>:null}
-          {step===13?<Shedule time={time} setTime={setTime} startDate={startDate} setStartDate={setStartDate} step={step} setStep={setStep}/>:null}
-          {step===14?<SheduleTime step={step} setStep={setStep}/>:null}
-          {step===15?<Confirm step={step} setStep={setStep}/>:null}
-          {step===16?<Appointment step={step} setStep={setStep}/>:null}
-          {step===17?<BillUpload step={step} setStep={setStep}/>:null}
-          {step===18?<FinalConfirmation step={step} setStep={setStep}/>:null}
+          {step === 1 ? (
+            <Address
+              setUserId={setUserId}
+              setCity={setCity}
+              setState={setState}
+              setZipCode={setZipCode}
+              address={address}
+              setAddress={setAddress}
+              step={step}
+              setStep={setStep}
+            />
+          ) : null}
+          {step === 2 ? (
+            <Bill
+              userId={userId}
+              result={result}
+              setResult={setResult}
+              bill={bill}
+              setBill={setBill}
+              step={step}
+              setStep={setStep}
+            />
+          ) : null}
+          {step === 3 ? <Messages step={step} setStep={setStep} /> : null}
+          {step === 4 ? (
+            <Result result={result} step={step} setStep={setStep} />
+          ) : null}
+          {step === 5 ? (
+            <Contact
+              userId={userId}
+              name={name}
+              setName={setName}
+              email={email}
+              setEmail={setEmail}
+              number={number}
+              setNumber={setNumber}
+              step={step}
+              setStep={setStep}
+            />
+          ) : null}
+          {step === 6 ? <Qualified step={step} setStep={setStep} /> : null}
+          {step === 7 ? (
+            <Question1
+              userId={userId}
+              address={address}
+              setAddress={setAddress}
+              appartment={appartment}
+              setAppartment={setApparment}
+              step={step}
+              setStep={setStep}
+            />
+          ) : null}
+          {step === 8 ? (
+            <Question2
+              userId={userId}
+              property={property}
+              setProperty={setProperty}
+              step={step}
+              setStep={setStep}
+            />
+          ) : null}
+          {step === 9 ? (
+            <Question3
+              userId={userId}
+              family={family}
+              setFamily={setFamily}
+              step={step}
+              setStep={setStep}
+            />
+          ) : null}
+          {step === 10 ? (
+            <Question4
+              userId={userId}
+              credictScore={credictScore}
+              setCreditScore={setCreditScore}
+              step={step}
+              setStep={setStep}
+            />
+          ) : null}
+          {step === 11 ? (
+            <Question5
+              userId={userId}
+              duration={duration}
+              setDuration={setDuration}
+              step={step}
+              setStep={setStep}
+            />
+          ) : null}
+          {step === 12 ? (
+            <QualifedMessage step={step} setStep={setStep} />
+          ) : null}
+          {step === 13 ? (
+            <Shedule
+              userId={userId}
+              date={date}
+              setDate={setDate}
+              step={step}
+              setStep={setStep}
+            />
+          ) : null}
+          {step === 14 ? (
+            <SheduleTime
+              userId={userId}
+              region={region}
+              setRegion={setRegion}
+              time={time}
+              setTime={setTime}
+              step={step}
+              setStep={setStep}
+            />
+          ) : null}
+          {step === 15 ? (
+            <Confirm
+              userId={userId}
+              name={name}
+              setName={setName}
+              number={number}
+              setNumber={setName}
+              email={email}
+              setEmail={setEmail}
+              address={address}
+              setAddress={setAddress}
+              appartment={appartment}
+              setAppartment={setApparment}
+              city={city}
+              setCity={setCity}
+              state={state}
+              setState={setState}
+              zipcode={zipcode}
+              setZipCode={setZipCode}
+              date={date}
+              region={region}
+              time={time}
+              step={step}
+              setStep={setStep}
+            />
+          ) : null}
+          {step === 16 ? <Appointment step={step} setStep={setStep} /> : null}
+          {step === 17 ? <BillUpload userId={userId} step={step} setStep={setStep} /> : null}
+          {step === 18 ? (
+            <FinalConfirmation step={step} setStep={setStep} />
+          ) : null}
         </div>
       </div>
     </div>

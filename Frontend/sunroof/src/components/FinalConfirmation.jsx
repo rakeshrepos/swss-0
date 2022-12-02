@@ -9,7 +9,7 @@ function FinalConfirmation() {
 
         <div className="w-full flex-col items-center">
             <p className='text-center text-3xl mb-2'>Your Quote is being prepared</p>
-            <p className='text-center'>Our engineers are hard at work designing a custom solar panel system to fit your roof. If we have any questions we'll react out!</p>
+            <p className='text-center'>Our engineers are hard at work designing a custom solar panel system to fit your roof. If we have any questions we Reach Out!</p>
 
             <p className="text-center mt-5">We look forward to speaking with you on</p>
             <p className='text-center font-bold'>Wednesday, December 7 at 3:30 PM</p>

@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import ChatBubble from './ChatBubble'
 import { ChevronLeftIcon } from '@heroicons/react/24/outline'
 import './Slider.css'
+import axios from 'axios';
 
   
-function Bill({bill,setBill,step,setStep}) {
+function Bill({userId,result,setResult,bill,setBill,step,setStep}) {
     const [sliderPosition,setSliderPosition] = useState(0);
 
     const storeBill = (billValue)=>{
@@ -12,6 +13,20 @@ function Bill({bill,setBill,step,setStep}) {
         setSliderPosition(position+'%')
         setBill(billValue)
     }
+
+    const CalculateSavings = ()=>{
+        try{
+            axios.post('http://localhost:8000/api/calculate', {user_id:userId,bill:bill})
+                .then(response =>
+                    {
+                    setResult(response.data)
+                    setStep(step+1)
+                } );
+        }catch(e){
+            console.log(e)
+        }
+    }
+
 
     let positionStyle = {
         left: `${sliderPosition}`
@@ -41,7 +56,7 @@ function Bill({bill,setBill,step,setStep}) {
             <button onClick={()=>{setStep(step-1)}} className='border-[1px] border-[#03a9f4] h-[3rem] w-[4rem] flex justify-center items-center'>
                 <ChevronLeftIcon className='text-[#03a9f4] h-6 w-6'/>
             </button>
-            <button onClick={()=>{setStep(step+1)}} className='bg-[#03a9f4] w-full text-white text-xl font-bold h-[3rem]'>Calculate Savings</button>
+            <button onClick={()=>{CalculateSavings()}} className='bg-[#03a9f4] w-full text-white text-xl font-bold h-[3rem]'>Calculate Savings</button>
         </div>
     </div>
   )

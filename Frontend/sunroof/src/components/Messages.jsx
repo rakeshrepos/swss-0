@@ -3,8 +3,6 @@ import ChatBubble from './ChatBubble'
 import { ChevronLeftIcon } from '@heroicons/react/24/outline'
 
 function Messages({step,setStep}) {
-  // setInterval(function(){setStep(step+1)},3000);
-  // setStep(step+1)
   return (
     <div className='w-screen lg:w-[50rem] px-[1rem] lg:px-[6rem] py-[3rem]'>
         <div className='space-y-3'>

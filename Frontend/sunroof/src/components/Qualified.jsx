@@ -1,12 +1,10 @@
 import React from 'react'
 import ChatBubble from './ChatBubble'
-// import Button from '@material-ui/core'
 function Qualified({step,setStep}) {
 
   return (
     <div className='w-screen lg:w-[50rem] lg:px-[6rem] py-[3rem]'>
         <div className='space-y-3'>
-            {/* progress  */}
         </div>
 
         <ChatBubble message="I just have a few quick questions to help us expedite your quote! This should take 60 seconds or less."/>

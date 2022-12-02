@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Card from './Card';
 import ChatBubble from './ChatBubble';
 import TypingIndicator from './TypingIndicator';
-function Result({step,setStep}) {
+function Result({result,step,setStep}) {
     const settings = {
         dots: true,
         infinite: false,
@@ -21,7 +21,11 @@ function Result({step,setStep}) {
         setTimeout(() => {
         setStage("DONE");
         }, 1000);
-    },[step]);
+    },[]);
+
+    function currencyFormat(num) {
+        return '$' + num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+     }
   return (
     <div className='w-screen lg:w-[50rem] lg:px-[6rem] py-[3rem]'>
         <div className='space-y-3'>
@@ -45,28 +49,15 @@ function Result({step,setStep}) {
             <div className='bg-gray-200 p-4 rounded-t-[1rem] rounded-br-[1rem] w-[35rem]'>
                 <p className='text-[1.8rem] text-[#3a3a3a] mb-4'>Check out these savings!</p>
                 <Slider {...settings}>
-                <Card title="Approximate Lifetime Savings" heading="$325,281" subheading="Over 25 years"/>
-                <Card title="Increase in Home Value" heading="4.1%" subheading="According to Zillow"/>
-                <Card title="Environmental Impact" heading="260" subheading="Trees grown in 10 years"/>
-                <Card title="Recommended System" heading="5-7 kW" subheading="(14-20 panels)"/>
+                <Card title="Approximate Lifetime Savings" heading={currencyFormat(result['savings'])} subheading="Over 25 years"/>
+                <Card title="Increase in Home Value" heading={result['home_value']} subheading="According to Zillow"/>
+                <Card title="Environmental Impact" heading={result['tree_seedings']} subheading="Trees grown in 10 years"/>
+                <Card title="Recommended System" heading={result['recommendedSolarKWH']+"kW"} subheading={"( "+result['panels']+" panels )"}/>
                 <Card title="" heading="" subheading=""/>
                 </Slider>
             </div>
         </div>
         )}
-        {/* <div className='flex items-end gap-2 mt-5'>
-            <img src={AVATAR} alt="" className='h-10 w-10 rounded-full'/>
-            <div className='bg-gray-200 p-4 rounded-t-[1rem] rounded-br-[1rem] w-[35rem]'>
-                <p className='text-[1.8rem] text-[#3a3a3a] mb-4'>Check out these savings!</p>
-                <Slider {...settings}>
-                <Card title="Approximate Lifetime Savings" heading="$325,281" subheading="Over 25 years"/>
-                <Card title="Increase in Home Value" heading="4.1%" subheading="According to Zillow"/>
-                <Card title="Environmental Impact" heading="260" subheading="Trees grown in 10 years"/>
-                <Card title="Recommended System" heading="5-7 kW" subheading="(14-20 panels)"/>
-                <Card title="" heading="" subheading=""/>
-                </Slider>
-            </div>
-        </div> */}
 
         <ChatBubble message="Ready to see ballpark pricing?" />
         <div className="flex mt-5 gap-2">
